@@ -1,5 +1,14 @@
 import hre from "hardhat";
 
+// ARGUMENTS
+// GMT	Tue Mar 19 2024 22:00:00 GMT+0000
+// const TIMESTAMP_DISABLE_MAX_WALLET_TOKENS = 1710885600;
+const TIMESTAMP_DISABLE_MAX_WALLET_TOKENS =
+  Math.ceil(Date.now() / 1000) + 60 * 60 * 0.1;
+
+// Percentage ot total supply that any wallet can buy until TIMESTAMP_DISABLE_MAX_WALLET_TOKENS
+const maxWalletTokenPercentage = 1;
+
 // Colour codes for terminal prints
 const RESET = "\x1b[0m";
 const GREEN = "\x1b[32m";
@@ -9,13 +18,21 @@ function delay(ms: number) {
 }
 
 async function main() {
-  const constructorArgs = ["Hello, Hardhat!"];
-  const contract = await hre.ethers.deployContract("Greeter", constructorArgs);
+  const constructorArgs = [
+    TIMESTAMP_DISABLE_MAX_WALLET_TOKENS,
+    maxWalletTokenPercentage,
+  ];
+  const contract = await hre.ethers.deployContract(
+    "MemeToken",
+    constructorArgs,
+  );
 
   await contract.waitForDeployment();
   const contractAddress = await contract.getAddress();
 
-  console.log("Greeter deployed to: " + `${GREEN}${contractAddress}${RESET}\n`);
+  console.log(
+    "MemeToken deployed to: " + `${GREEN}${contractAddress}${RESET}\n`,
+  );
 
   console.log(
     "Waiting 30 seconds before beginning the contract verification to allow the block explorer to index the contract...\n",
@@ -29,7 +46,7 @@ async function main() {
 
   // Uncomment if you want to enable the `tenderly` extension
   // await hre.tenderly.verify({
-  //   name: "Greeter",
+  //   name: "MemeToken",
   //   address: contractAddress,
   // });
 }

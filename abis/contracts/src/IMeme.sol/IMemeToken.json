@@ -1,0 +1,8 @@
+[
+  "error MemeTokenInvalidAmount(uint256,uint256,uint256,uint256)",
+  "error MemeTokenInvalidPercentage(uint256)",
+  "error MemeTokenInvalidTimestamp(uint256,uint256)",
+  "error MemeTokenLiquidityPoolCantBeZero()",
+  "event LiquidityPoolAddressChanged(address indexed)",
+  "event MaxWalletAmountChanged(uint256)"
+]

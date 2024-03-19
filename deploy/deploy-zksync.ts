@@ -31,13 +31,15 @@ export default async function main(hre: HardhatRuntimeEnvironment) {
   const deployer = new Deployer(hre, wallet);
 
   const constructorArgs = ["Hello, Hardhat!"];
-  const artifact = await deployer.loadArtifact("Greeter");
+  const artifact = await deployer.loadArtifact("MemeToken");
   const contract = await deployer.deploy(artifact, constructorArgs);
 
   await contract.waitForDeployment();
   const contractAddress = await contract.getAddress();
 
-  console.log("Greeter deployed to: " + `${GREEN}${contractAddress}${RESET}\n`);
+  console.log(
+    "MemeToken deployed to: " + `${GREEN}${contractAddress}${RESET}\n`,
+  );
 
   console.log(
     "Waiting 30 seconds before beginning the contract verification to allow the block explorer to index the contract...\n",

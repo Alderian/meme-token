@@ -1,12 +1,8 @@
 import hre from "hardhat";
 
 // ARGUMENTS
-// GMT	Tue Mar 19 2024 22:00:00 GMT+0000
-// const TIMESTAMP_DISABLE_MAX_WALLET_TOKENS = 1710885600;
-const TIMESTAMP_DISABLE_MAX_WALLET_TOKENS =
-  Math.ceil(Date.now() / 1000) + 60 * 60 * 0.1;
 
-// Percentage ot total supply that any wallet can buy until TIMESTAMP_DISABLE_MAX_WALLET_TOKENS
+// Percentage ot total supply that any wallet can buy
 const maxWalletTokenPercentage = 1;
 
 // Colour codes for terminal prints
@@ -19,7 +15,6 @@ function delay(ms: number) {
 
 async function main() {
   const constructorArgs = [
-    TIMESTAMP_DISABLE_MAX_WALLET_TOKENS,
     maxWalletTokenPercentage,
   ];
   const contract = await hre.ethers.deployContract(

@@ -9,14 +9,13 @@ describe("MemeToken", function () {
   let memeToken: MemeToken;
 
   // ARGUMENTS
-  const TIMESTAMP_DISABLE_MAX_WALLET_TOKENS = Date.now() / 1000;
-  // Percentage ot total supply that any wallet can buy until TIMESTAMP_DISABLE_MAX_WALLET_TOKENS
+  // Percentage ot total supply that any wallet can buy
   const maxWalletTokenPercentage = 1;
 
   beforeEach(async function () {
     memeToken = await hre.ethers.deployContract(
       "MemeToken",
-      [TIMESTAMP_DISABLE_MAX_WALLET_TOKENS, maxWalletTokenPercentage],
+      [maxWalletTokenPercentage],
       deployerAccount,
     );
     await memeToken.waitForDeployment();

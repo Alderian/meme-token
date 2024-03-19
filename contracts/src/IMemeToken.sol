@@ -19,8 +19,6 @@ interface IMemeToken {
 
     /**
      * @dev Emitted when new max wallet transfer amount has been set to `newMaxWalletAmount`.
-     *
-     * Note: The limit is enforced until `TIMESTAMP_DISABLE_MAX_WALLET_TOKENS`
      */
 
     event MaxWalletAmountChanged(uint256 newMaxWalletAmount);
@@ -42,10 +40,10 @@ interface IMemeToken {
      * @dev Indicates an error related to the amount you want to transfer while limit is enforced.
      * @param limit Current amount limit.
      * @param amount Wanted transfer amount.
-     * @param timeLimit Current limited timestamp.
-     * @param currentTime Current timestamp.
+     * @param liquidityPool Allowed destination
+     * @param to actual destination.
      */
-    error MemeTokenInvalidAmount(uint256 limit, uint256 amount, uint256 timeLimit, uint256 currentTime);
+    error MemeTokenInvalidAmount(uint256 limit, uint256 amount, address liquidityPool, address to);
 
     /**
      * @dev Indicates an error related to the Liquidity Pool. It needs to be different to Zero Address

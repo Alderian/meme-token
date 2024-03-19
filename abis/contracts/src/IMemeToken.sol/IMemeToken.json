@@ -1,5 +1,5 @@
 [
-  "error MemeTokenInvalidAmount(uint256,uint256,uint256,uint256)",
+  "error MemeTokenInvalidAmount(uint256,uint256,address,address)",
   "error MemeTokenInvalidPercentage(uint256)",
   "error MemeTokenInvalidTimestamp(uint256,uint256)",
   "error MemeTokenLiquidityPoolCantBeZero()",
